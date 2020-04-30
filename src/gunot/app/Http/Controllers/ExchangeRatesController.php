@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ExchangeRatesResource;
-use App\Http\Resources\ExchangeRateResource;
 use App\Currency;
 use App\ExchangeRates;
 use Illuminate\Support\Facades\Http;

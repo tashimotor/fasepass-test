@@ -27,6 +27,10 @@ class ExchangeRatesController extends Controller
         $response           =Http::get('https://api.exchangeratesapi.io/latest?base=RUB');
         $exchangeRatesValues=$response->json()['rates'];
         foreach($exchangeRatesValues as $currencyName=>&$exchangeRateValue){
+            if(empty($currencyName) || !is_numeric($exchangeRateValue) || $exchangeRateValue===0){
+                continue;
+            }
+
             $exchangeRate=Currency::firstOrCreate([
                 'name'=>$currencyName,
                 'code'=>$currencyName,
